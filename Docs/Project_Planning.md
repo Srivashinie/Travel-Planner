@@ -10,13 +10,13 @@
 - Show restaurant and hotel recommendations based on user preferences.
 - Let users set an overall trip budget and provide a breakdown of expenses.
 
-**2.MVP for Travel Planner Application**
+**2. MVP for Travel Planner Application**
 - Allow users to search for a destination and enter travel details (e.g., dates and preferences).
 - Provide a list of recommended restaurants and hotels near the destination.
 - Display weather updates for the selected destination.
 - Users can create, save, and view an itinerary for their trips.
 
-**3.User Stories**
+**3. User Stories**
 - As a user, I want to search for a destination by name, so that I can plan my trip to a specific location.
 - As a user, I want to add my travel dates and preferences so that the app can provide personalized suggestions for my trip.
 - As a user, I want to see weather updates for my selected destination, so that I can prepare for current weather conditions.
@@ -26,4 +26,10 @@
 - As a user, I want to see a list of recommended restaurants near my selected destination, so that I can plan where to eat during my trip.
 - As a user, I want to see a list of recommended hotels near my selected destination, so that I can plan where to stay during my trip.
 
+**4. Workflow**
+- We will use python, html and css to develop this application.
+- The user inputs their travel details such as dates, preferences and submits them.
+- The frontend then displays the itinerary and recommendations with options for the user to customize.
+- The backend processes this input by fetching data from APIs and the database, generates recommendations and creates the itinerary and then sends the results back to the frontend.
+- The database stores and retrieves user preferences, itineraries, activity details, and updates dynamic information like weather.
 
