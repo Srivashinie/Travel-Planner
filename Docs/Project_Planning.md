@@ -31,5 +31,12 @@
 - The user inputs their travel details such as dates, preferences and submits them.
 - The frontend then displays the itinerary and recommendations with options for the user to customize.
 - The backend processes this input by fetching data from APIs and the database, generates recommendations and creates the itinerary and then sends the results back to the frontend.
-- The database stores and retrieves user preferences, itineraries, activity details, and updates dynamic information like weather.
+- The database stores and retrieves user preferences, itineraries, activity details, and updates dynamic information like weather
+- The folder structure for the project: 
+  /app.py file to initialize the application 
+  /views/routes to handles different routes for the pages
+  /templates folder has different templates for pages like itinerary.html, recommendations.html, form.html
+  /db folder to manage the database connection
+  /static/styles.css has all the styling for the application
+  /requirements.txt to indicate all the dependencies and packages to install
 
