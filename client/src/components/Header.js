@@ -36,6 +36,24 @@ const Header = () => {
             >
               Itin
             </Nav.Link>
+
+            <Nav.Link
+              as={Link}
+              to="/search"
+              className="nav-link"
+              style={{ color: "white", fontWeight: "bold" }}
+            >
+              Search Hotels
+            </Nav.Link>
+
+            <Nav.Link
+              as={Link}
+              to="/weather"
+              className="nav-link"
+              style={{ color: "white", fontWeight: "bold" }}
+            >
+              Weather
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
