@@ -2,8 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Itin from "./pages/Itin";
-import Weather from "./pages/Weather";
-import Search from "./pages/Search";
+import Restaurants from "./pages/Restaurants";
+import Hotels from "./pages/Hotels";
 import Header from "./components/Header";
 
 export default function App() {
@@ -13,8 +13,8 @@ export default function App() {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route path="/itin" element={<Itin />} />
-        <Route path="/weather" element={<Weather />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/restaurants" element={<Restaurants />} />
+        <Route path="/hotels" element={<Hotels />} />
       </Routes>
     </Router>
   );

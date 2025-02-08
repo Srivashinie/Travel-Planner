@@ -34,25 +34,25 @@ const Header = () => {
               className="nav-link"
               style={{ color: "white", fontWeight: "bold" }}
             >
-              Itin
+              Itinerary
             </Nav.Link>
 
             <Nav.Link
               as={Link}
-              to="/search"
+              to="/hotels"
               className="nav-link"
               style={{ color: "white", fontWeight: "bold" }}
             >
-              Search Hotels
+              Hotels
             </Nav.Link>
 
             <Nav.Link
               as={Link}
-              to="/weather"
+              to="/restaurants"
               className="nav-link"
               style={{ color: "white", fontWeight: "bold" }}
             >
-              Weather
+              Restaurants
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
