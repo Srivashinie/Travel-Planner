@@ -52,26 +52,91 @@ form {
   flex-direction: column;
   width: 100%;
 }
+.search-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
 
 .search-container {
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 400px;
+  width: 700px;
   margin: 0 auto;
   margin-top: 50px;
+  text-align: center;
+}
+.label-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 5px;
 }
 
-.search-form {
+.label-row label {
+  font-weight: bold;
+  width: 30%;
+  text-align: center;
+}
+
+.search-inputs {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+}
+
+.input-group {
+  position: relative;
+  width: 50%;
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(44, 62, 80);
+  font-size: 18px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px 10px 10px 35px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  width: 100%;
 }
 
 .search-button {
-  background-color: #3498db;
+  margin-top: 20px;
+  width: 50%;
+  font-size: 16px;
+  padding: 10px;
+  background-color: rgb(44, 62, 80);
   color: white;
-  padding: 10px 20px;
   border: none;
   cursor: pointer;
   border-radius: 5px;
@@ -81,7 +146,18 @@ form {
   background-color: #2980b9;
 }
 
-/* Restaurant Cards */
+.icon {
+  margin-right: 8px;
+  color: #3498db;
+  font-size: 18px;
+}
+.input-wrapper input {
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 16px;
+  padding: 5px;
+}
 .restaurant-list {
   margin-top: 50px;
   display: flex;
