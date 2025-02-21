@@ -20,7 +20,13 @@ const ItineraryForm = ({ place, days, setPlace, setDays, handleSubmit }) => {
           className="form-control"
           value={place}
           onChange={(e) => setPlace(e.target.value)}
-          style={{ flex: "1" }}
+          placeholder="Enter your destination"
+          style={{
+            flex: "1",
+            backgroundColor: "white",
+            color: "lightgray",
+            fontSize: "12px",
+          }}
         />
       </div>
       <div
@@ -40,14 +46,37 @@ const ItineraryForm = ({ place, days, setPlace, setDays, handleSubmit }) => {
           className="form-control"
           value={days}
           onChange={(e) => setDays(e.target.value)}
-          style={{ flex: "1" }}
+          placeholder="Enter number of days"
+          style={{
+            flex: "1",
+            backgroundColor: "white",
+            color: "lightgray",
+            fontSize: "12px",
+          }}
         />
       </div>
       <div className="text-center">
         <button
           type="submit"
-          className="btn btn-primary"
-          style={{ padding: "10px 20px" }}
+          className="btn"
+          style={{
+            padding: "10px 20px",
+            backgroundColor: "white",
+            color: "rgba(22,93,112,1)",
+            border: "none",
+            borderRadius: "5px",
+            fontWeight: "bold",
+            cursor: "pointer",
+            transition: "background-color 0.3s ease",
+          }}
+          onMouseOver={(e) => {
+            e.target.style.backgroundColor = "black";
+            e.target.style.border = "white";
+          }}
+          onMouseOut={(e) => {
+            e.target.style.backgroundColor = "white";
+            e.target.style.border = "none";
+          }}
         >
           Generate Itinerary
         </button>

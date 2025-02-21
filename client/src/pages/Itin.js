@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import axios from "axios";
 import ItineraryForm from "../components/ItinForm";
 import ItineraryDetails from "../components/ItinDetails";
+import WeatherDetails from "../components/WeatherDetails";
 
 const Itinerary = () => {
   const [place, setPlace] = useState("");
   const [days, setDays] = useState("");
   const [itinerary, setItinerary] = useState("");
+  const [weather, setWeather] = useState(null);
   const [error, setError] = useState("");
 
   const handleSubmit = async (event) => {
@@ -21,9 +23,19 @@ const Itinerary = () => {
 
       setItinerary(response.data.itinerary);
       setError("");
+
+      // Fetch weather data for the place
+      const weatherResponse = await axios.get(
+        `/api/weather/weather?place=${place}`
+      );
+
+      setWeather(weatherResponse.data);
     } catch (err) {
-      setError("Failed to generate itinerary. Please try again.");
+      setError(
+        "Failed to generate itinerary or Weather data. Please try again."
+      );
       setItinerary("");
+      setWeather(null);
     }
   };
 
@@ -31,21 +43,23 @@ const Itinerary = () => {
     <div
       style={{
         minHeight: "100vh",
-        color: "black",
-        padding: "20px",
+        color: "white",
+        padding: "0px",
+        backgroundColor: "white",
       }}
     >
       <div
-        className="container"
         style={{
-          maxWidth: "800px",
-          backgroundColor: "white",
+          width: "100%",
+          background:
+            "linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(22,93,112,1)  100%)",
+
           padding: "20px",
-          borderRadius: "10px",
-          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+          borderRadius: "0px",
+          marginBottom: "10px",
         }}
       >
-        <h1 className="text-center mb-4" style={{ color: "#2C3E50" }}>
+        <h1 className="text-center mb-4" style={{ color: "white" }}>
           Itinerary Generator
         </h1>
         <ItineraryForm
@@ -70,6 +84,8 @@ const Itinerary = () => {
         )}
 
         {itinerary && <ItineraryDetails itinerary={itinerary} />}
+
+        {weather && <WeatherDetails weather={weather} place={place} />}
       </div>
     </div>
   );
