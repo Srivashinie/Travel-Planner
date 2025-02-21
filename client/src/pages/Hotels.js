@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../style.css";
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([]); // State to hold hotel list
@@ -33,87 +34,76 @@ const Hotels = () => {
   };
 
   return (
-    <div
-      style={{
-        minHeight: "10vh",
-        color: "blue",
-        padding: "20px",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div
-        className="container"
-        style={{
-          maxWidth: "600px",
-          backgroundColor: "lightgray",
-          padding: "20px",
-          borderRadius: "10px",
-          boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
-          justifyContent: "center",
-          alignItems: "center",
-          display: "flex",
-        }}
-      >
-        <div>
-          <h2 style={{ color: "maroon", padding: "8px" }}>
-            <strong>EXPLORE HOTELS</strong>
-          </h2>
+    <div className="hotels-container">
+      <div className="form-box">
+        <h2>
+          <strong>EXPLORE HOTELS</strong>
+        </h2>
+        <div className="search-box">
           <input
             type="text"
             id="destination"
-            placeholder="Enter destination"
+            placeholder="Please enter destination"
             value={destination}
             onChange={(e) => setDestination(e.target.value)} // Update destination state
             style={{
               marginRight: "15px",
               padding: "8px",
               width: "250px",
-            }} // Adds space & padding and width
-          />
-          <button
-            onClick={searchHotels}
-            style={{
-              marginRight: "15px",
-              padding: "5px",
-              width: "180px",
-              height: "45px",
-              backgroundcolor: "white",
             }}
-          >
-            <strong>Search Hotels</strong>
-          </button>
-
-          {/* Display hotels */}
-          <div id="hotels-list">
-            {loading ? (
-              <p style={{ margin: "20px 0", padding: "5px 0" }}>
-                Where do you want to explore?
-              </p>
-            ) : hotels.length === 0 ? (
-              <p>No hotels found</p>
-            ) : (
-              <ul>
-                {hotels.map((hotel, index) => (
-                  <li key={index} style={{ marginBottom: "15px" }}>
-                    <strong style={{ marginBottom: "15px", color: "red" }}>
-                      {hotel.name}
-                    </strong>
-                    <div>
-                      <strong>{"Price "}</strong>
-                      {hotel.total_rate.lowest || "Price not available"}{" "}
-                    </div>
-                    <div>
-                      <strong>{"Ratings "}</strong>{" "}
-                      {hotel.overall_rating || "Ratings not available"}
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+          />
+          <button onClick={searchHotels}>Search Hotels</button>
         </div>
+        <p>Where do you want to stay?</p>
+      </div>
+
+      {/* Display hotels in card layout */}
+      <div className="hotels-list">
+        {loading ? (
+          <p></p>
+        ) : hotels.length === 0 ? (
+          <p>No hotels found</p>
+        ) : (
+          hotels.map((hotel, index) => (
+            <div
+              key={index}
+              style={{ marginBottom: "15px" }}
+              className="hotel-card"
+            >
+              <img
+                src={
+                  hotel.images[0].thumbnail ||
+                  hotel.images[1].thumbnail ||
+                  hotel.images[2].thumbnail ||
+                  hotel.images[3].thumbnail
+                }
+                alt="Hotel"
+                className="hotel-image"
+              />
+              <div className="card-content">
+                <h3>
+                  <strong>{hotel.name}</strong>
+                </h3>
+                <p>
+                  <strong>{"Price "}</strong>
+                  {hotel.total_rate.lowest || "Price not available"}{" "}
+                </p>
+                <p>
+                  <strong>{"Ratings "}</strong>{" "}
+                  {hotel.overall_rating || "Ratings not available"}
+                </p>
+                <a
+                  href={hotel.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hotel-link"
+                >
+                  Book Now
+                </a>
+              </div>
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
