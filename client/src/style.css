@@ -24,6 +24,7 @@ h2 {
 h3 {
   color: #2c3e50;
   margin: 10px 0;
+  font-size: bold;
 }
 
 button {
@@ -348,4 +349,126 @@ ul li {
     width: 100%;
     margin-bottom: 5px;
   }
+
+.form-box {
+  color: #3498db;
+  align-items: center;
+  text-align: center;
+  background-color: white;
+  border: 1px solid white;
+  margin: 50px;
+  margin-left: 400px;
+  margin-right: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hotels-container h2 {
+  color: maroon;
+  padding: 8px;
+}
+
+.search-box {
+  margin-bottom: 20px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.search-box input {
+  padding: 8px;
+  width: 250px;
+  margin-right: 10px;
+}
+
+.search-box button {
+  padding: 8px 15px;
+  background-color: rgb(44, 134, 190);
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background-color: darkblue;
+}
+
+/* Hotels list grid */
+.hotels-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.hotels-list p {
+  margin: 20px 0;
+  padding: 5px 0;
+  color: rgb(9, 152, 241);
+  display: "flex";
+}
+
+/* Card layout for hotels */
+.hotel-card {
+  width: 280px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  transition: 0.3s;
+  overflow: hidden;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  height: 100%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+/* Card content */
+.card-content {
+  padding: 5px;
+}
+
+.card-content h3 {
+  font-size: 18px;
+  margin-bottom: "10px";
+  color: rgb(9, 152, 241);
+}
+
+.card-content p {
+  font-size: 14px;
+  margin: 2px 0;
+  line-height: 1.2;
+}
+
+/* Card image */
+.hotel-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.hotel-link {
+  color: #67ace4;
+  text-decoration: burlywood;
+  padding: 2px 3px;
+  background-color: rgb(44, 134, 190);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.hotel-link:hover {
+  background-color: darkblue;
 }
