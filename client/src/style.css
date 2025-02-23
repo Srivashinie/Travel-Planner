@@ -211,28 +211,29 @@ form {
 
 /*styling for hotel page*/
 .form-box {
-  color: #3498db;
+  color: #064feb;
   align-items: center;
   text-align: center;
   background-color: white;
   border: 1px solid white;
-  margin: 10px;
-  margin-left: 430px;
-  margin-right: 430px;
+  margin: 5px;
+  margin-left: 350px;
+  margin-right: 350px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 10px;
+  font-family: Arial, sans-serif;
 }
 
 .hotels-container h2 {
   color: darkblue;
   padding: 8px;
+  font-family: Arial, sans-serif;
 }
 
 .search-box {
   margin-bottom: 10px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .search-box label {
@@ -297,7 +298,6 @@ form {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
-/* Card content */
 .card-content {
   padding: 5px;
 }
@@ -314,7 +314,6 @@ form {
   line-height: 1.2;
 }
 
-/* Card image */
 .hotel-image {
   width: 100%;
   height: 150px;
@@ -338,23 +337,19 @@ form {
 }
 
 .filter-box {
-  padding: 10px;
-  width: 200px;
-  margin: 10px;
   display: flex;
   align-items: center;
   font-size: 17px;
   justify-content: center;
-  width: 100%;
 }
 
 #budget {
   background-color: white;
   margin: 5px;
-  display: flex;
-  flex-direction: column;
-  width: 220px;
-  cursor: pointer;
+  padding: 8px;
+  width: 170px;
+  border: "1px solid gray";
+  height: "40px";
 }
 #budget:focus {
   border-color: #3498db;
@@ -364,4 +359,12 @@ form {
 #budget option {
   background-color: white;
   color: rgb(42, 35, 35);
+}
+
+.search-fields {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
 }
