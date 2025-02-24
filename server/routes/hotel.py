@@ -10,10 +10,10 @@ hotel_bp = Blueprint('hotel_bp', __name__)
 @hotel_bp.route("/generate", methods=["GET"])
 def get_hotels():
     destination = request.args.get("destination")
-    today = date.today() + timedelta(1)
-    tomorrow = date.today() + timedelta(1)
-    base_url = f"https://serpapi.com/search.json?engine=google_hotels&q={destination}&as_eqp={destination}&check_in_date={today}&check_out_date={tomorrow}&hl=en&api_key={api_key}"
-    
+    check_in_date = request.args.get("check_in_date")
+    check_out_date = request.args.get("check_out_date")
+    base_url = f"https://serpapi.com/search.json?engine=google_hotels&q={destination}&as_eqp={destination}&check_in_date={check_in_date}&check_out_date={check_out_date}&hl=en&api_key={api_key}"
+
     try:
         # Sending GET request to SerpAPI
         response = requests.get(base_url)
