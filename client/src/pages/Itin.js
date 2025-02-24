@@ -83,9 +83,23 @@ const Itinerary = () => {
           </div>
         )}
 
-        {itinerary && <ItineraryDetails itinerary={itinerary} />}
-
-        {weather && <WeatherDetails weather={weather} place={place} />}
+        {itinerary && weather && (
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "10px",
+              marginTop: "20px",
+            }}
+          >
+            <div style={{ flex: "2" }}>
+              <ItineraryDetails itinerary={itinerary} />
+            </div>
+            <div style={{ flex: "1" }}>
+              <WeatherDetails weather={weather} place={place} />
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
