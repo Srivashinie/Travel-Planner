@@ -37,7 +37,7 @@ button {
 }
 
 button:hover {
-  background-color: #2980b9;
+  background-color: darkblue;
 }
 
 input[type="text"] {
@@ -350,47 +350,53 @@ ul li {
     margin-bottom: 5px;
   }
 }
+
+/*styling for hotel page*/
 .form-box {
   color: #3498db;
   align-items: center;
   text-align: center;
   background-color: white;
   border: 1px solid white;
-  margin: 50px;
-  margin-left: 400px;
-  margin-right: 400px;
+  margin: 10px;
+  margin-left: 430px;
+  margin-right: 430px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
 }
 
 .hotels-container h2 {
-  color: maroon;
+  color: darkblue;
   padding: 8px;
 }
 
 .search-box {
-  margin-bottom: 20px;
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-  display: flex;
+  margin-bottom: 10px;
+}
+
+.search-box label {
+  font-weight: bold;
 }
 
 .search-box input {
-  padding: 8px;
+  padding: 10px;
   width: 250px;
-  margin-right: 10px;
+  margin-right: 30px;
 }
 
 .search-box button {
   padding: 8px 15px;
-  background-color: rgb(44, 134, 190);
+  background-color: rgb(21, 157, 242);
   color: white;
   border: none;
   cursor: pointer;
 }
 
 .search-box button:hover {
-  background-color: darkblue;
+  background-color: rgb(10, 10, 173);
 }
 
 /* Hotels list grid */
@@ -471,4 +477,33 @@ ul li {
 
 .hotel-link:hover {
   background-color: darkblue;
+}
+
+.filter-box {
+  padding: 10px;
+  width: 200px;
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 17px;
+  justify-content: center;
+  width: 100%;
+}
+
+#budget {
+  background-color: white;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  width: 220px;
+  cursor: pointer;
+}
+#budget:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+#budget option {
+  background-color: white;
+  color: rgb(42, 35, 35);
 }

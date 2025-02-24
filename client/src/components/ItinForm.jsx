@@ -24,8 +24,8 @@ const ItineraryForm = ({ place, days, setPlace, setDays, handleSubmit }) => {
           style={{
             flex: "1",
             backgroundColor: "white",
-            color: "lightgray",
-            fontSize: "12px",
+            color: "black",
+            fontSize: "15px",
           }}
         />
       </div>
@@ -50,8 +50,8 @@ const ItineraryForm = ({ place, days, setPlace, setDays, handleSubmit }) => {
           style={{
             flex: "1",
             backgroundColor: "white",
-            color: "lightgray",
-            fontSize: "12px",
+            color: "black",
+            fontSize: "15px",
           }}
         />
       </div>
