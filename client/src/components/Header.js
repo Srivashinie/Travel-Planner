@@ -10,8 +10,7 @@ const Header = () => {
       style={{
         background: "#2C3E50",
         color: "white",
-      }}
-    >
+      }}>
       <Container>
         <Navbar.Brand href="/" style={{ color: "white", fontWeight: "bold" }}>
           Travel Planner
@@ -23,8 +22,7 @@ const Header = () => {
               as={Link}
               to="/"
               className="nav-link"
-              style={{ color: "white", fontWeight: "bold" }}
-            >
+              style={{ color: "white", fontWeight: "bold" }}>
               Home
             </Nav.Link>
 
@@ -32,8 +30,7 @@ const Header = () => {
               as={Link}
               to="/itin"
               className="nav-link"
-              style={{ color: "white", fontWeight: "bold" }}
-            >
+              style={{ color: "white", fontWeight: "bold" }}>
               Itinerary
             </Nav.Link>
 
@@ -41,8 +38,7 @@ const Header = () => {
               as={Link}
               to="/hotels"
               className="nav-link"
-              style={{ color: "white", fontWeight: "bold" }}
-            >
+              style={{ color: "white", fontWeight: "bold" }}>
               Hotels
             </Nav.Link>
 
@@ -50,9 +46,16 @@ const Header = () => {
               as={Link}
               to="/restaurants"
               className="nav-link"
-              style={{ color: "white", fontWeight: "bold" }}
-            >
+              style={{ color: "white", fontWeight: "bold" }}>
               Restaurants
+            </Nav.Link>
+
+            <Nav.Link
+              as={Link}
+              to="/createitin"
+              className="nav-link"
+              style={{ color: "white", fontWeight: "bold" }}>
+              Personal Itinerary
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

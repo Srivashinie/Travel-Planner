@@ -168,9 +168,9 @@ form {
 
 .restaurant-cards {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Set 5 items per row */
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
-  width: 100%; /* Adjust width to 100% for a full row */
+  width: 100%;
 }
 
 .restaurant-card {
@@ -178,14 +178,14 @@ form {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Let the card take full width within its grid cell */
+  width: 100%;
   text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .restaurant-card:hover {
-  transform: translateY(-10px); /* Lift the card up */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Add a larger shadow */
+  transform: translateY(-10px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 .restaurant-card img {
@@ -207,6 +207,148 @@ form {
 
 .view-link:hover {
   text-decoration: underline;
+}
+
+.container-createitin {
+  width: 80%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-button {
+  background-color: rgb(44, 62, 80);
+}
+
+.modify-button {
+  background-color: rgb(44, 62, 80);
+}
+
+.view-button {
+  background-color: rgb(44, 62, 80);
+}
+
+.delete-button {
+  background-color: rgb(44, 62, 80);
+}
+
+.save-button {
+  background-color: rgb(44, 62, 80);
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background: #ecf0f1;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchitin-container {
+  margin-bottom: 20px;
+}
+
+.searchitin-container input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.searchitin-container button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  margin-left: 5px;
+}
+
+.searchitin-container button:hover {
+  background-color: #2980b9;
+}
+
+/* Search Results */
+.searchitin-results {
+  margin-top: 20px;
+}
+
+.searchitin-results ul {
+  list-style: none;
+  padding: 0;
+}
+
+.searchitin-results li {
+  padding: 10px;
+  background: #ecf0f1;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Itinerary List */
+.itinerarylist-container {
+  margin-top: 20px;
+}
+
+.itinerarylist-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.itinerarylist-container li {
+  padding: 10px;
+  background: #ecf0f1;
+  margin-bottom: 5px;
+  border-radius: 5px;
+}
+
+.itinerarylist-container strong {
+  color: #2c3e50;
+}
+
+.itinerarylist-results button {
+  background-color: #27ae60;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+.itinerarylist-results button:hover {
+  background-color: #219150;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .container-createitin {
+    width: 95%;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
 }
 
 /*styling for hotel page*/
