@@ -8,6 +8,9 @@ itinerary_bp = Blueprint('itinerary_bp', __name__)
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def generate_itinerary(place, days):
+    if not place or not days.isdigit():
+        return "Error generating itinerary: Invalid input, please try again."
+
     try:
         # Prompt for itinerary generation
         messages = [
