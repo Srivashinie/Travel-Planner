@@ -1,7 +1,7 @@
 import os
 import requests
 from datetime import date, timedelta
-from flask import Blueprint, request
+from flask import Blueprint, request, jsonify
 
 api_key = os.getenv('SERP_API_KEY')
 
@@ -12,6 +12,14 @@ def get_hotels():
     destination = request.args.get("destination")
     check_in_date = request.args.get("check_in_date")
     check_out_date = request.args.get("check_out_date")
+
+    if not destination:
+        return jsonify({"error": "Destination is required"}), 400
+    if not check_in_date:
+        return jsonify({"error": "Check-in date is required"}), 400
+    if not check_out_date:
+        return jsonify({"error": "Check-out Date is required"}), 400
+
     base_url = f"https://serpapi.com/search.json?engine=google_hotels&q={destination}&as_eqp={destination}&check_in_date={check_in_date}&check_out_date={check_out_date}&hl=en&api_key={api_key}"
 
     try:
@@ -37,6 +45,7 @@ def get_hotels():
         else:
             print(f"Error: Unable to fetch data for city: {destination} (status code: {response.status_code})")
             print(f"Response error text: {response.text}") # very important for debug
+            return jsonify({"error": f"Unable to fetch data for city: {destination}"}), response.status_code
             
     except Exception as e:
         print(f"error occurred: {e}")
