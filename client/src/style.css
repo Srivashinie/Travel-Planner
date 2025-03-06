@@ -358,7 +358,7 @@ ul li {
   text-align: center;
   background-color: white;
   border: 1px solid white;
-  margin: 5px;
+  /*margin: 5px;*/
   margin-left: 350px;
   margin-right: 350px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -366,10 +366,22 @@ ul li {
   font-family: Arial, sans-serif;
 }
 
+.hotels-container {
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgb(14, 113, 140) 100%
+  );
+  height: 300vh;
+  width: 100vw;
+  margin-top: 0;
+}
+
 .hotels-container h2 {
   color: darkblue;
   padding: 8px;
   font-family: Arial, sans-serif;
+  font-size: 30px;
 }
 
 .search-box {
@@ -416,8 +428,9 @@ ul li {
 .hotels-list p {
   margin: 20px 0;
   padding: 5px 0;
-  color: rgb(9, 152, 241);
+  color: black;
   display: "flex";
+  font-size: 18px;
 }
 
 /* Card layout for hotels */

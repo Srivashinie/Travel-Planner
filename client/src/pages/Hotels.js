@@ -80,7 +80,7 @@ const Hotels = () => {
   return (
     <div className="hotels-container">
       <div className="form-box">
-        <h2 style={{ fontSize: "30px" }}>
+        <h2>
           <strong>EXPLORE HOTELS</strong>
         </h2>
         <div className="search-box">
@@ -129,7 +129,7 @@ const Hotels = () => {
                   margin: "5px",
                   padding: "5px",
                   width: "150px",
-                  fontSize: "16px",
+                  fontSize: "15px",
                   border: "1px solid lightgray",
                   height: "40px",
                   fontFamily: "Arial, sans-serif",
@@ -157,7 +157,7 @@ const Hotels = () => {
                   margin: "5px",
                   padding: "8px",
                   width: "150px",
-                  fontSize: "17px",
+                  fontSize: "15px",
                   border: "1px solid lightgray",
                   height: "40px",
                   color: "black",
