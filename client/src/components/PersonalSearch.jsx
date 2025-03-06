@@ -17,7 +17,7 @@ const ItinerarySearch = ({ onCreateItinerary, onSearch }) => {
 
   return (
     <div className="searchitin-container">
-      <h2>Search for Places and Create Itinerary</h2>
+      <h2 className="personal-itin">Search for Places and Create Itinerary</h2>
       <div>
         <input
           type="text"
