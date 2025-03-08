@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../style.css";
-import default_hotel_img from "./hotel-image.jpg";
+import HotelDetails from "../components/HotelDetails";
 
 const Hotels = () => {
   const [hotels, setHotels] = useState([]);
@@ -49,34 +49,6 @@ const Hotels = () => {
     return true;
   };
 
-  const checkImageExists = (url) => {
-    return new Promise((resolve) => {
-      if (!url || url.trim() === "") {
-        resolve(false);
-        return;
-      }
-      const img = new Image();
-      img.src = url;
-      img.onload = () => resolve(true);
-      img.onerror = () => resolve(false);
-    });
-  };
-
-  const getValidImage = (hotel) => {
-    if (!hotel.images || hotel.images.length === 0) {
-      return default_hotel_img;
-    }
-
-    for (const img of hotel.images) {
-      if (img?.thumbnail?.trim()) {
-        const isValid = checkImageExists(img.thumbnail);
-        if (isValid) return img.thumbnail;
-      }
-    }
-
-    return default_hotel_img;
-  };
-
   return (
     <div className="hotels-container">
       <div className="form-box">
@@ -84,7 +56,7 @@ const Hotels = () => {
           <strong>EXPLORE HOTELS</strong>
         </h2>
         <div className="search-box">
-          <lebel
+          <label
             style={{
               fontWeight: "bold",
               fontSize: "17px",
@@ -92,7 +64,7 @@ const Hotels = () => {
             }}
           >
             Destination:
-          </lebel>
+          </label>
           <input
             type="text"
             id="destination"
@@ -168,7 +140,7 @@ const Hotels = () => {
             {/* Budget filter dropdown */}
             <div className="filter-box">
               <label htmlFor="budget">
-                <stong>Budget: </stong>{" "}
+                <strong>Budget: </strong>
               </label>
               <select
                 id="budget"
@@ -194,36 +166,9 @@ const Hotels = () => {
         ) : hotels.filter(budgetFilter).length === 0 ? (
           <p>No hotels found</p>
         ) : (
-          hotels.filter(budgetFilter).map((hotel, index) => (
-            <div key={index} className="hotel-card">
-              <img
-                src={getValidImage(hotel)}
-                alt="Hotel"
-                className="hotel-image"
-              />
-              <div className="card-content">
-                <h3>
-                  <strong>{hotel.name}</strong>
-                </h3>
-                <p>
-                  <strong>Price: </strong>
-                  {hotel.total_rate.lowest || "Price not available"}
-                </p>
-                <p>
-                  <strong>Ratings: </strong>
-                  {hotel.overall_rating || "Ratings not available"}
-                </p>
-                <a
-                  href={hotel.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hotel-link"
-                >
-                  Book Now
-                </a>
-              </div>
-            </div>
-          ))
+          hotels
+            .filter(budgetFilter)
+            .map((hotel, index) => <HotelDetails key={index} hotel={hotel} />)
         )}
       </div>
     </div>
