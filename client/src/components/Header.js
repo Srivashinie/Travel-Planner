@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../style.css";
+import logo from "../assets/images/logo-travel.webp";
 
 const Header = () => {
   return (
@@ -10,9 +11,28 @@ const Header = () => {
       style={{
         background: "#2C3E50",
         color: "white",
-      }}>
+      }}
+    >
       <Container>
-        <Navbar.Brand href="/" style={{ color: "white", fontWeight: "bold" }}>
+        <Navbar.Brand
+          as={Link}
+          to="/"
+          style={{
+            color: "white",
+            fontWeight: "bold",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <img
+            src={logo}
+            alt="Travel Planner Logo"
+            style={{
+              height: "40px",
+              width: "auto",
+              marginRight: "10px",
+            }}
+          />
           Travel Planner
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -22,7 +42,8 @@ const Header = () => {
               as={Link}
               to="/"
               className="nav-link"
-              style={{ color: "white", fontWeight: "bold" }}>
+              style={{ color: "white", fontWeight: "bold" }}
+            >
               Home
             </Nav.Link>
 
@@ -30,7 +51,8 @@ const Header = () => {
               as={Link}
               to="/itin"
               className="nav-link"
-              style={{ color: "white", fontWeight: "bold" }}>
+              style={{ color: "white", fontWeight: "bold" }}
+            >
               Itinerary
             </Nav.Link>
 
@@ -38,7 +60,8 @@ const Header = () => {
               as={Link}
               to="/hotels"
               className="nav-link"
-              style={{ color: "white", fontWeight: "bold" }}>
+              style={{ color: "white", fontWeight: "bold" }}
+            >
               Hotels
             </Nav.Link>
 
@@ -46,7 +69,8 @@ const Header = () => {
               as={Link}
               to="/restaurants"
               className="nav-link"
-              style={{ color: "white", fontWeight: "bold" }}>
+              style={{ color: "white", fontWeight: "bold" }}
+            >
               Restaurants
             </Nav.Link>
 
@@ -54,7 +78,8 @@ const Header = () => {
               as={Link}
               to="/createitin"
               className="nav-link"
-              style={{ color: "white", fontWeight: "bold" }}>
+              style={{ color: "white", fontWeight: "bold" }}
+            >
               Personal Itinerary
             </Nav.Link>
           </Nav>
