@@ -5,6 +5,7 @@ from routes.restaurants import restaurants_bp
 from routes.hotel import hotel_bp
 from routes.createitinerary import place_search_bp 
 from routes.weather import weather_bp
+from db import db
 
 
 app = Flask(__name__)
@@ -18,8 +19,7 @@ app.register_blueprint(place_search_bp, url_prefix='/api/place')
 app.register_blueprint(weather_bp, url_prefix='/api/weather')
 
 
-
 if __name__ == '__main__':
-    app.run(port=5000, debug=True)
+    app.run(port=5000, debug=False)
 
 

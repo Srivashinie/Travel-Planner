@@ -7,6 +7,7 @@ const CreateItineraryList = ({
   saveItinerary,
 }) => {
   const [location, setLocation] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const addPlaceToItinerary = (place) => {
     setItineraries((prevItineraries) =>
@@ -14,7 +15,10 @@ const CreateItineraryList = ({
         itin.id === itinerary.id
           ? {
               ...itin,
-              places: [...itin.places, place],
+              places: [
+                ...itin.places,
+                { name: place.name, address: place.address }, // Save name and address
+              ],
               searchResults: itin.searchResults.filter(
                 (p) => p.id !== place.id
               ),
@@ -24,14 +28,35 @@ const CreateItineraryList = ({
     );
   };
 
-  const removePlaceFromItinerary = (placeId) => {
+  const removePlaceFromItinerary = (placeName) => {
     setItineraries((prevItineraries) =>
       prevItineraries.map((itin) =>
         itin.id === itinerary.id
-          ? { ...itin, places: itin.places.filter((p) => p.id !== placeId) }
+          ? {
+              ...itin,
+              places: itin.places.filter((p) => p.name !== placeName),
+            }
           : itin
       )
     );
+  };
+
+  const [showSearchResults, setShowSearchResults] = useState(true);
+
+  const handleSearch = () => {
+    if (!location.trim()) {
+      setErrorMessage(
+        "Location cannot be empty. Please enter a valid location."
+      );
+    } else {
+      setErrorMessage("");
+      fetchPlaces(location, itinerary.id);
+    }
+  };
+
+  const handleSave = () => {
+    saveItinerary(itinerary.id);
+    setShowSearchResults(false);
   };
 
   return (
@@ -45,52 +70,57 @@ const CreateItineraryList = ({
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
-        <button onClick={() => fetchPlaces(location, itinerary.id)}>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        <button className="personal-itin-button" onClick={handleSearch}>
           Search Places
         </button>
       </div>
 
-      <h3>Itinerary Places</h3>
+      <h3 className="personal-itin">Itinerary Places</h3>
       <ul>
-        {itinerary.places.map((place) => (
-          <li key={place.id}>
-            {place.name} - {place.rating}
+        {itinerary.places.map((place, index) => (
+          <li key={index}>
+            <strong>{place.name}</strong> - {place.address}
             <button
               className="delete-button"
-              onClick={() => removePlaceFromItinerary(place.id)}>
+              onClick={() => removePlaceFromItinerary(place.name)}>
               Delete
             </button>
           </li>
         ))}
       </ul>
 
-      <h3>Search Results</h3>
-      <div className="searchitin-results">
-        <ul>
-          {itinerary.searchResults.length > 0 ? (
-            itinerary.searchResults.map((place) => (
-              <li key={place.id}>
-                <img src={place.image_url} alt={place.name} width="50" />
-                <strong>{place.name}</strong> - {place.rating}
-                <p>{place.address}</p>
-                <button
-                  className="add-button"
-                  onClick={() => addPlaceToItinerary(place)}>
-                  Add
-                </button>
-              </li>
-            ))
-          ) : (
-            <p>No places found.</p>
-          )}
-        </ul>
-      </div>
-
-      <button
-        className="save-button"
-        onClick={() => saveItinerary(itinerary.id)}>
+      <button className="save-button" onClick={handleSave}>
         Save
       </button>
+
+      {showSearchResults ? (
+        <>
+          <h3 className="personal-itin">Search Results</h3>
+          <div className="searchitin-results">
+            <ul>
+              {itinerary.searchResults.length > 0 ? (
+                itinerary.searchResults.map((place) => (
+                  <li key={place.id}>
+                    <img src={place.image_url} alt={place.name} width="50" />
+                    <strong>{place.name}</strong>
+                    <p>{place.address}</p> {/* Displaying address */}
+                    <button
+                      className="add-button"
+                      onClick={() => addPlaceToItinerary(place)}>
+                      Add
+                    </button>
+                  </li>
+                ))
+              ) : (
+                <p>No places found.</p>
+              )}
+            </ul>
+          </div>
+        </>
+      ) : (
+        <p className="saved-message">Itinerary saved!</p>
+      )}
     </div>
   );
 };

@@ -214,9 +214,10 @@ form {
   max-width: 900px;
   margin: 20px auto;
   padding: 20px;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
 }
 
 .add-button {
@@ -338,7 +339,51 @@ ul li {
 .itinerarylist-results button:hover {
   background-color: #219150;
 }
+.delete-button {
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
 
+.delete-button:hover {
+  background-color: #cc0000;
+}
+.personal-itin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+.personal-itin-button {
+  display: block;
+  width: 200px;
+  margin: 20px auto;
+  padding: 12px 24px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.personal-itin-button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.personal-itin-button:focus {
+  outline: none;
+}
 /* Responsive Design */
 @media (max-width: 600px) {
   .container-createitin {
