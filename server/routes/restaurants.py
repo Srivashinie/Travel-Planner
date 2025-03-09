@@ -42,11 +42,16 @@ def fetch_restaurants(location="New York", category="restaurants", price=""):
         
         if response.status_code in ERROR_CODES:
             return {"error": ERROR_CODES[response.status_code]}, response.status_code
-        
-        response.raise_for_status()  
-        return response.json().get("businesses", []), 200 
+
+        response.raise_for_status()
+        data = response.json()
+
+        if "businesses" not in data or len(data["businesses"]) == 0:
+            return {"error": "No restaurants found. Please try another location or category."}, 404
+
+        return data.get("businesses", []), 200
     except requests.exceptions.RequestException as e:
-        return {"error": str(e)}, 500  
+        return {"error": "No restaurants found. Please try another location or category."}, 500
 
 @restaurants_bp.route('/restaurants', methods=['GET'])
 def get_restaurant_data():

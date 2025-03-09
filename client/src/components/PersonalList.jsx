@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
 const CreateItineraryList = ({
-  itinerary,
+  itinerary = { name: "Unnamed Itinerary", places: [], searchResults: [] },
   fetchPlaces,
   setItineraries,
   saveItinerary,
 }) => {
   const [location, setLocation] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showSearchResults, setShowSearchResults] = useState(true);
 
   const addPlaceToItinerary = (place) => {
     setItineraries((prevItineraries) =>
@@ -16,10 +17,10 @@ const CreateItineraryList = ({
           ? {
               ...itin,
               places: [
-                ...itin.places,
-                { name: place.name, address: place.address }, // Save name and address
+                ...(itin.places || []),
+                { name: place.name, address: place.address },
               ],
-              searchResults: itin.searchResults.filter(
+              searchResults: (itin.searchResults || []).filter(
                 (p) => p.id !== place.id
               ),
             }
@@ -34,15 +35,14 @@ const CreateItineraryList = ({
         itin.id === itinerary.id
           ? {
               ...itin,
-              places: itin.places.filter((p) => p.name !== placeName),
+              places: (itin.places || []).filter((p) => p.name !== placeName),
             }
           : itin
       )
     );
   };
 
-  const [showSearchResults, setShowSearchResults] = useState(true);
-
+  // Handle search functionality
   const handleSearch = () => {
     if (!location.trim()) {
       setErrorMessage(
@@ -77,18 +77,22 @@ const CreateItineraryList = ({
       </div>
 
       <h3 className="personal-itin">Itinerary Places</h3>
-      <ul>
-        {itinerary.places.map((place, index) => (
-          <li key={index}>
-            <strong>{place.name}</strong> - {place.address}
-            <button
-              className="delete-button"
-              onClick={() => removePlaceFromItinerary(place.name)}>
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+      {itinerary.places.length > 0 ? (
+        <ul>
+          {itinerary.places.map((place, index) => (
+            <li key={index}>
+              <strong>{place.name}</strong> - {place.address}
+              <button
+                className="delete-button"
+                onClick={() => removePlaceFromItinerary(place.name)}>
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No places added yet.</p>
+      )}
 
       <button className="save-button" onClick={handleSave}>
         Save
@@ -98,24 +102,26 @@ const CreateItineraryList = ({
         <>
           <h3 className="personal-itin">Search Results</h3>
           <div className="searchitin-results">
-            <ul>
-              {itinerary.searchResults.length > 0 ? (
-                itinerary.searchResults.map((place) => (
+            {itinerary.searchResults.length > 0 ? (
+              <ul>
+                {itinerary.searchResults.map((place) => (
                   <li key={place.id}>
-                    <img src={place.image_url} alt={place.name} width="50" />
+                    {place.image_url && (
+                      <img src={place.image_url} alt={place.name} width="50" />
+                    )}
                     <strong>{place.name}</strong>
-                    <p>{place.address}</p> {/* Displaying address */}
+                    <p>{place.address}</p>
                     <button
                       className="add-button"
                       onClick={() => addPlaceToItinerary(place)}>
                       Add
                     </button>
                   </li>
-                ))
-              ) : (
-                <p>No places found.</p>
-              )}
-            </ul>
+                ))}
+              </ul>
+            ) : (
+              <p>No places found.</p>
+            )}
           </div>
         </>
       ) : (
