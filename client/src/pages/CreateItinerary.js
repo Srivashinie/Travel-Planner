@@ -28,10 +28,12 @@ const CreateItinerary = () => {
     try {
       const response = await axios.get(
         "http://127.0.0.1:5000/api/place/search_places",
-        {
-          params: { query },
-        }
+        { params: { query } }
       );
+
+      if (response.data.error) {
+        throw new Error(response.data.error);
+      }
 
       setItineraries((prevItineraries) =>
         prevItineraries.map((itin) =>
@@ -42,6 +44,11 @@ const CreateItinerary = () => {
       );
     } catch (error) {
       console.error("Error fetching places:", error);
+      setItineraries((prevItineraries) =>
+        prevItineraries.map((itin) =>
+          itin.id === itineraryId ? { ...itin, searchResults: [] } : itin
+        )
+      );
     }
   };
 
@@ -57,19 +64,44 @@ const CreateItinerary = () => {
   };
 
   const deleteItinerary = async (id) => {
+    const itineraryExists = itineraries.some((itin) => itin.id === id);
+    if (!itineraryExists) {
+      console.error("Itinerary not found in state");
+      return;
+    }
+
     try {
-      await axios.delete(
-        `http://127.0.0.1:5000/api/place/delete_itinerary/${id}`
-      );
-      setItineraries((prevItineraries) =>
-        prevItineraries.filter((itinerary) => itinerary.id !== id)
-      );
+      const itinerary = itineraries.find((itin) => itin.id === id);
+
+      if (itinerary.isNew) {
+        // Remove locally if not saved
+        setItineraries((prevItineraries) =>
+          prevItineraries.filter((itin) => itin.id !== id)
+        );
+      } else {
+        await axios.delete(
+          `http://127.0.0.1:5000/api/place/delete_itinerary/${id}`
+        );
+        setItineraries((prevItineraries) =>
+          prevItineraries.filter((itin) => itin.id !== id)
+        );
+      }
+
+      if (selectedItinerary === id) {
+        setSelectedItinerary(null);
+        setViewMode(false);
+      }
+
       alert("Itinerary deleted successfully!");
     } catch (error) {
-      console.error("Error deleting itinerary:", error);
+      console.error(
+        "Error deleting itinerary:",
+        error.response ? error.response.data : error.message
+      );
       alert("Failed to delete itinerary.");
     }
   };
+
   useEffect(() => {
     axios
       .get("http://127.0.0.1:5000/api/place/get_itineraries")

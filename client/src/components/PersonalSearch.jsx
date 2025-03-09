@@ -3,6 +3,7 @@ import React, { useState } from "react";
 const ItinerarySearch = ({ onCreateItinerary, onSearch }) => {
   const [itineraryName, setItineraryName] = useState("");
   const [location, setLocation] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleCreateItinerary = () => {
     if (itineraryName) {
@@ -12,7 +13,16 @@ const ItinerarySearch = ({ onCreateItinerary, onSearch }) => {
   };
 
   const handleSearch = () => {
-    onSearch(location);
+    if (!location.trim()) {
+      setErrorMessage(
+        "Location cannot be empty. Please enter a valid location."
+      );
+    } else {
+      setErrorMessage("");
+      fetchPlaces(location, itinerary.id).catch(() => {
+        console.error("Failed to fetch places");
+      });
+    }
   };
 
   return (
@@ -36,6 +46,7 @@ const ItinerarySearch = ({ onCreateItinerary, onSearch }) => {
           onChange={(e) => setLocation(e.target.value)}
         />
         <button onClick={handleSearch}>Search Places</button>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>
     </div>
   );

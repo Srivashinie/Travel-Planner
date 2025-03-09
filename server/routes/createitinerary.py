@@ -28,9 +28,12 @@ def search_places():
     response = requests.get(YELP_SEARCH_URL, headers=headers, params=params)
 
     if response.status_code != 200:
-        return jsonify({"error": "Failed to fetch places"}), 500
+        return jsonify({"error": f"Failed to fetch places: {response.json().get('error', {}).get('description', 'Unknown error')}" }), 500
 
     places = response.json().get("businesses", [])
+
+    if not places:
+        return jsonify({"error": "No places found for the given location."}), 404
 
     formatted_places = [
         {
