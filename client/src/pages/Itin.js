@@ -3,12 +3,14 @@ import axios from "axios";
 import ItineraryForm from "../components/ItinForm";
 import ItineraryDetails from "../components/ItinDetails";
 import WeatherDetails from "../components/WeatherDetails";
+import { Link } from "react-router-dom";
 
 const Itinerary = () => {
   const [place, setPlace] = useState("");
   const [days, setDays] = useState("");
   const [itinerary, setItinerary] = useState("");
   const [weather, setWeather] = useState(null);
+  const [restaurants, setRestaurants] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
@@ -31,12 +33,32 @@ const Itinerary = () => {
       );
 
       setWeather(weatherResponse.data);
+
+      // Fetch restaurant data for the place
+      const restaurantResponse = await axios.get(
+        `/api/restaurants/restaurants`,
+        { params: { location: place } }
+      );
+
+      // Sort restaurants by rating and take top 5
+      let sortedRestaurants = restaurantResponse.data
+        .sort((a, b) => b.rating - a.rating)
+        .slice(0, 5);
+
+      // Remove duplicate restaurant names (if any)
+      sortedRestaurants = sortedRestaurants.filter(
+        (value, index, self) =>
+          index === self.findIndex((t) => t.name === value.name)
+      );
+
+      setRestaurants(sortedRestaurants);
     } catch (err) {
       setError(
-        "Failed to generate itinerary or weather data. Please try again."
+        "Failed to generate itinerary, weather data, or restaurants. Please try again."
       );
       setItinerary("");
       setWeather(null);
+      setRestaurants([]);
     } finally {
       setLoading(false);
     }
@@ -125,7 +147,7 @@ const Itinerary = () => {
           </div>
         )}
 
-        {!loading && itinerary && weather && (
+        {!loading && itinerary && weather && restaurants.length > 0 && (
           <div
             style={{
               display: "flex",
@@ -139,6 +161,103 @@ const Itinerary = () => {
             </div>
             <div style={{ flex: "1" }}>
               <WeatherDetails weather={weather} place={place} />
+
+              {/* Restaurants Component */}
+              <div
+                className="mt-4"
+                style={{
+                  width: "95%",
+                  background:
+                    "linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(22,93,112,1)  100%)",
+                  color: "black",
+                  padding: "20px",
+                  borderRadius: "10px",
+                  boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
+                  marginBottom: "20px",
+                  margin: "0 auto",
+                }}
+              >
+                <h3
+                  style={{
+                    fontFamily: "'Caveat', cursive",
+                    color: "white",
+                    fontSize: "24px",
+                  }}
+                >
+                  <strong> Recommended Restaurants in {place}</strong>
+                </h3>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                  }}
+                >
+                  <ul style={{ listStyleType: "none", paddingLeft: "20px" }}>
+                    {restaurants.map((restaurant) => (
+                      <p
+                        key={restaurant.id}
+                        style={{
+                          marginTop: "20px",
+                          fontFamily: "'Caveat', cursive",
+                          fontSize: "16px",
+                          color: "white",
+                          paddingBottom: "5px",
+                          backgroundColor: "transparent",
+                        }}
+                      >
+                        * {restaurant.name} Restaurant with rating of {""}
+                        {restaurant.rating} stars
+                      </p>
+                    ))}
+                  </ul>
+                  <Link
+                    to="/restaurants"
+                    style={{
+                      padding: "10px 20px",
+                      backgroundColor: "white",
+                      color: "rgba(22,93,112,1)",
+                      border: "none",
+                      borderRadius: "5px",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "background-color 0.3s ease",
+                    }}
+                  >
+                    Explore Restaurants
+                  </Link>
+                  <p
+                    style={{
+                      marginTop: "20px",
+                      fontFamily: "'Caveat', cursive",
+                      fontSize: "14px",
+                      color: "white",
+                      paddingBottom: "5px",
+                      backgroundColor: "transparent",
+                    }}
+                  >
+                    Ready to find a place to stay? In addition to exploring
+                    great restaurants, you can also discover amazing hotels
+                    tailored to your destination, dates, and budget!
+                  </p>
+                  <Link
+                    to="/hotels"
+                    style={{
+                      padding: "10px 20px",
+                      backgroundColor: "rgba(22,93,112,1)",
+                      color: "white",
+                      border: "none",
+                      borderRadius: "5px",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      transition: "background-color 0.3s ease",
+                      marginTop: "10px",
+                    }}
+                  >
+                    Explore Hotels
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         )}
