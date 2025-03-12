@@ -71,9 +71,7 @@ const CreateItineraryList = ({
           onChange={(e) => setLocation(e.target.value)}
         />
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        <button className="personal-itin-button" onClick={handleSearch}>
-          Search Places
-        </button>
+        <button onClick={handleSearch}>Search Places</button>
       </div>
 
       <h3 className="personal-itin">Itinerary Places</h3>
@@ -94,9 +92,7 @@ const CreateItineraryList = ({
         <p>No places added yet.</p>
       )}
 
-      <button className="save-button" onClick={handleSave}>
-        Save
-      </button>
+      <button onClick={handleSave}>Save</button>
 
       {showSearchResults ? (
         <>
@@ -111,9 +107,7 @@ const CreateItineraryList = ({
                     )}
                     <strong>{place.name}</strong>
                     <p>{place.address}</p>
-                    <button
-                      className="add-button"
-                      onClick={() => addPlaceToItinerary(place)}>
+                    <button onClick={() => addPlaceToItinerary(place)}>
                       Add
                     </button>
                   </li>

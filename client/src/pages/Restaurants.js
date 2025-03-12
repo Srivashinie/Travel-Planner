@@ -31,9 +31,19 @@ const Restaurants = () => {
   };
 
   return (
-    <div className="restaurants-container">
-      <RestaurantSearch onSearch={fetchRestaurants} />
-      <RestaurantList restaurants={restaurants} error={error} />
+    <div
+      style={{
+        paddingTop: "80px",
+        backgroundImage:
+          "linear-gradient(to right top, #fdcfbf, #ebcbb0, #d7c7a7, #c2c3a2, #adbea1, #a3bda2, #99bca5, #8fbba8, #8bbfac, #86c2b1, #81c6b6, #7bc9bc)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+      }}>
+      <div className="restaurants-container">
+        <RestaurantSearch onSearch={fetchRestaurants} />
+        <RestaurantList restaurants={restaurants} error={error} />
+      </div>
     </div>
   );
 };

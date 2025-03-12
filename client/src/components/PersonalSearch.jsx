@@ -35,7 +35,12 @@ const ItinerarySearch = ({ onCreateItinerary, onSearch }) => {
           value={itineraryName}
           onChange={(e) => setItineraryName(e.target.value)}
         />
-        <button onClick={handleCreateItinerary}>Create Itinerary</button>
+        <button
+          style={{ borderRadius: "15px" }}
+          className="personal-itin-button "
+          onClick={handleCreateItinerary}>
+          Create Itinerary
+        </button>
       </div>
 
       <div>
@@ -45,7 +50,9 @@ const ItinerarySearch = ({ onCreateItinerary, onSearch }) => {
           value={location}
           onChange={(e) => setLocation(e.target.value)}
         />
-        <button onClick={handleSearch}>Search Places</button>
+        <button className="personal-itin-button" onClick={handleSearch}>
+          Search Places
+        </button>
         {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
       </div>
     </div>

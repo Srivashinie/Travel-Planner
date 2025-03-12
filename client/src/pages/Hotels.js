@@ -50,126 +50,134 @@ const Hotels = () => {
   };
 
   return (
-    <div className="hotels-container">
-      <div className="form-box">
-        <h2>
-          <strong>EXPLORE HOTELS</strong>
-        </h2>
-        <div className="search-box">
-          <label
-            style={{
-              fontWeight: "bold",
-              fontSize: "17px",
-              fontFamily: "Arial, sans-serif",
-            }}
-          >
-            Destination:
-          </label>
-          <input
-            type="text"
-            id="destination"
-            placeholder="Please enter destination"
-            value={destination}
-            onChange={(e) => setDestination(e.target.value)}
-            style={{
-              margin: "10px",
-              padding: "8px",
-              width: "660px",
-              border: "1px solid lightgray",
-              fontFamily: "Arial, sans-serif",
-              fontSize: "16px",
-            }}
-          />
+    <div
+      style={{
+        paddingTop: "80px",
+        backgroundImage:
+          "linear-gradient(to right top, #fdcfbf, #ebcbb0, #d7c7a7, #c2c3a2, #adbea1, #a3bda2, #99bca5, #8fbba8, #8bbfac, #86c2b1, #81c6b6, #7bc9bc)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+      }}>
+      <div className="hotels-container">
+        <div
+          className="form-box"
+          style={{
+            backgroundColor: "rgba(255, 255, 255, 0)",
+            boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+          }}>
+          <h1>Explore Hotels</h1>
+          <div className="search-box">
+            <label
+              style={{
+                fontWeight: "bold",
+                color: "black",
+                //marginTop: "15px",
+              }}>
+              Destination:
+            </label>
+            <input
+              type="text"
+              id="destination"
+              placeholder="Please enter destination"
+              value={destination}
+              onChange={(e) => setDestination(e.target.value)}
+              style={{
+                margin: "10px",
+                padding: "8px",
+                width: "660px",
+                border: "1px solid lightgray",
+              }}
+            />
 
-          {/* Check-in Date */}
-          <div className="search-fields">
-            <div>
-              <label
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "17px",
-                  fontFamily: "Arial, sans-serif",
-                }}
-              >
-                Check-in:
-              </label>
-              <input
-                type="date"
-                value={checkInDate}
-                onChange={(e) => setCheckInDate(e.target.value)}
-                style={{
-                  margin: "5px",
-                  padding: "5px",
-                  width: "150px",
-                  fontSize: "15px",
-                  border: "1px solid lightgray",
-                  height: "40px",
-                  fontFamily: "Arial, sans-serif",
-                  color: "black",
-                }}
-              />
-            </div>
+            {/* Check-in Date */}
+            <div className="search-fields">
+              <div>
+                <label
+                  style={{
+                    fontWeight: "bold",
+                    color: "black",
+                  }}>
+                  Check-in:
+                </label>
+                <input
+                  type="date"
+                  value={checkInDate}
+                  onChange={(e) => setCheckInDate(e.target.value)}
+                  style={{
+                    margin: "5px",
+                    padding: "5px",
+                    width: "150px",
+                    fontSize: "15px",
+                    border: "1px solid lightgray",
+                    height: "40px",
+                    color: "black",
+                  }}
+                />
+              </div>
 
-            {/* Check-out Date */}
-            <div>
-              <label
-                style={{
-                  fontWeight: "bold",
-                  fontSize: "17px",
-                  fontFamily: "Arial, sans-serif",
-                }}
-              >
-                Check-out:
-              </label>
-              <input
-                type="date"
-                value={checkOutDate}
-                onChange={(e) => setCheckOutDate(e.target.value)}
-                style={{
-                  margin: "5px",
-                  padding: "8px",
-                  width: "150px",
-                  fontSize: "15px",
-                  border: "1px solid lightgray",
-                  height: "40px",
-                  color: "black",
-                }}
-              />
-            </div>
+              {/* Check-out Date */}
+              <div>
+                <label
+                  style={{
+                    fontWeight: "bold",
+                    color: "black",
+                  }}>
+                  Check-out:
+                </label>
+                <input
+                  type="date"
+                  value={checkOutDate}
+                  onChange={(e) => setCheckOutDate(e.target.value)}
+                  style={{
+                    margin: "5px",
+                    padding: "8px",
+                    width: "150px",
+                    fontSize: "15px",
+                    border: "1px solid lightgray",
+                    height: "40px",
+                    color: "black",
+                  }}
+                />
+              </div>
 
-            {/* Budget filter dropdown */}
-            <div className="filter-box">
-              <label htmlFor="budget">
-                <strong>Budget: </strong>
-              </label>
-              <select
-                id="budget"
-                value={budget}
-                onChange={(e) => setBudget(e.target.value)}
-                style={{ border: "1px solid lightgray" }}
-              >
-                <option value="all">All</option>
-                <option value="cheap">Cheap (Below $100)</option>
-                <option value="normal">Normal ($100 - $180)</option>
-                <option value="high">High (Above $180)</option>
-              </select>
+              {/* Budget filter dropdown */}
+              <div className="filter-box">
+                <label
+                  htmlFor="budget"
+                  style={{
+                    color: "black",
+                  }}>
+                  Budget:
+                </label>
+                <select
+                  id="budget"
+                  value={budget}
+                  onChange={(e) => setBudget(e.target.value)}
+                  style={{ border: "1px solid lightgray" }}>
+                  <option value="all">All</option>
+                  <option value="cheap">Cheap (Below $100)</option>
+                  <option value="normal">Normal ($100 - $180)</option>
+                  <option value="high">High (Above $180)</option>
+                </select>
+              </div>
             </div>
           </div>
+          <button onClick={searchHotels}>Search Hotels</button>
         </div>
-        <button onClick={searchHotels}>Search Hotels</button>
-      </div>
 
-      {/* Display hotels in card layout */}
-      <div className="hotels-list">
-        {loading ? (
-          <p></p>
-        ) : hotels.filter(budgetFilter).length === 0 ? (
-          <p>No hotels found</p>
-        ) : (
-          hotels
-            .filter(budgetFilter)
-            .map((hotel, index) => <HotelDetails key={index} hotel={hotel} />)
-        )}
+        {/* Display hotels in card layout */}
+        <div className="hotels-list">
+          {loading ? (
+            <p></p>
+          ) : hotels.filter(budgetFilter).length === 0 ? (
+            <p>No hotels found</p>
+          ) : (
+            hotels
+              .filter(budgetFilter)
+              .map((hotel, index) => <HotelDetails key={index} hotel={hotel} />)
+          )}
+        </div>
       </div>
     </div>
   );

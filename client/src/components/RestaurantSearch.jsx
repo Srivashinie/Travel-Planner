@@ -18,8 +18,17 @@ const RestaurantSearch = ({ onSearch }) => {
   };
 
   return (
-    <div className="search-container">
-      <h2>Search for Restaurants</h2>
+    <div
+      className="search-container"
+      style={{
+        backgroundColor: "rgba(255, 255, 255, 0)",
+        boxShadow: "0px 4px 15px rgba(0, 0, 0, 0.2)",
+        padding: "50px",
+        margin: "30px auto",
+      }}>
+      <h1>
+        Search for Restaurants<span>🍽️</span>
+      </h1>
 
       <form onSubmit={handleSubmit} className="search-form">
         {/* Labels Row */}
@@ -67,11 +76,15 @@ const RestaurantSearch = ({ onSearch }) => {
         </div>
 
         {/* Search Button */}
-        <button type="submit" className="search-button">
-          Search
+        <button
+          type="submit"
+          style={{ marginTop: "15px" }}
+          className="search-button">
+          {" "}
+          Search Restaurants
         </button>
       </form>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p>{error}</p>}
     </div>
   );
 };
