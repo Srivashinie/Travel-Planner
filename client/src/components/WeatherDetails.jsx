@@ -39,42 +39,39 @@ const WeatherDetails = ({ weather, place }) => {
       className="mt-4"
       style={{
         width: "95%",
-        background:
-          "linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(22,93,112,1)  100%)",
+        backgroundColor: "rgba(255, 255, 255, 0.2)",
         color: "black",
         padding: "20px",
         borderRadius: "10px",
         boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
         marginBottom: "20px",
         margin: "0 auto",
-      }}
-    >
+      }}>
       <h3
         style={{
           fontFamily: "'Caveat', cursive",
           color: "white",
           fontSize: "24px",
-        }}
-      >
+        }}>
         <strong> Current Weather in {place}:</strong>
       </h3>
       <div
         style={{
+          fontFamily: "'Caveat', cursive",
           display: "flex",
           alignItems: "center",
-        }}
-      >
+        }}>
         <div style={{ flex: 1 }}>
-          <p>
+          <p style={{ fontFamily: "'Caveat', cursive" }}>
             <strong>Temperature:</strong> {weather.temperature}°C
           </p>
-          <p>
+          <p style={{ fontFamily: "'Caveat', cursive" }}>
             <strong>Feels Like:</strong> {weather.feels_like}°C
           </p>
-          <p>
+          <p style={{ fontFamily: "'Caveat', cursive" }}>
             <strong>Humidity:</strong> {weather.humidity}%
           </p>
-          <p>
+          <p style={{ fontFamily: "'Caveat', cursive" }}>
             <strong>Description:</strong> {weather.description}
           </p>
         </div>

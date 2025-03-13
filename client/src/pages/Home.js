@@ -6,7 +6,7 @@ const Home = ({ title }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="home-container">
+    <div className="home-container" style={{ paddingTop: "80px" }}>
       <div className="home-content">
         <h1>
           <strong>Find Your Next Escape✈️🌍</strong>
@@ -17,20 +17,26 @@ const Home = ({ title }) => {
         </p>
 
         <div className="home-sections">
-          <div className="home-card itinerary">
+          <div
+            className="home-card itinerary"
+            style={{ backgroundColor: "rgba(255, 255, 255, 0.85)" }}>
             <h2>Itinerary</h2>
             <p>
               Plan your trip with the best places to visit and things to do.
             </p>
           </div>
-          <div className="home-card hotels">
+          <div
+            className="home-card hotels"
+            style={{ backgroundColor: "rgba(255, 255, 255, 0.85)" }}>
             <h2>Hotels</h2>
             <p>
               Find the perfect place to stay, with options ranging from budget
               to luxury.
             </p>
           </div>
-          <div className="home-card restaurants">
+          <div
+            className="home-card restaurants"
+            style={{ backgroundColor: "rgba(255, 255, 255, 0.85)" }}>
             <h2>Restaurants</h2>
             <p>
               Discover the best dining experiences, from local favorites to

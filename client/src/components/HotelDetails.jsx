@@ -72,7 +72,12 @@ const HotelDetails = ({ hotel }) => {
           target="_blank"
           rel="noopener noreferrer"
           className="hotel-link"
-        >
+          style={{
+            background: "linear-gradient(135deg, #67aca0, #467d74)",
+            fontWeight: "bold",
+            width: "120px",
+            padding: "10px",
+          }}>
           Book Now
         </a>
       </div>

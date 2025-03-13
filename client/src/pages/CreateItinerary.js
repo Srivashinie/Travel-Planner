@@ -110,74 +110,93 @@ const CreateItinerary = () => {
   }, []);
 
   return (
-    <div className="container-createitin">
-      <h1 className="personal-itin">Create Your Itinerary</h1>
-      <div>
-        <input
-          type="text"
-          placeholder="Enter Itinerary Name"
-          id="itinerary-name"
-        />
-        {error && <p style={{ color: "red" }}>{error}</p>}{" "}
-        <button
-          className="personal-itin-button"
-          onClick={() =>
-            createItinerary(document.getElementById("itinerary-name").value)
-          }>
-          Create Itinerary
-        </button>
-      </div>
+    <div
+      style={{
+        paddingTop: "80px",
+        backgroundImage:
+          "linear-gradient(to right top, #fdcfbf, #ebcbb0, #d7c7a7, #c2c3a2, #adbea1, #a3bda2, #99bca5, #8fbba8, #8bbfac, #86c2b1, #81c6b6, #7bc9bc)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        minHeight: "100vh",
+      }}>
+      <div className="container-createitin">
+        <h1 className="personal-itin">Create Your Itinerary</h1>
+        <div>
+          <input
+            type="text"
+            placeholder="Enter Itinerary Name"
+            id="itinerary-name"
+          />
+          {error && <p style={{ color: "red" }}>{error}</p>}
+          <button
+            style={{
+              display: "block",
+              margin: "20px auto",
+            }}
+            onClick={() =>
+              createItinerary(document.getElementById("itinerary-name").value)
+            }>
+            Create Itinerary
+          </button>
+        </div>
 
-      <h2 className="personal-itin">Itineraries</h2>
-      <div className="searchitin-results">
-        <ul>
-          {itineraries.map((itinerary) => (
-            <li key={itinerary.id}>
-              <strong>{itinerary.name}</strong>
-              <button
-                className="modify-button"
-                onClick={() => {
-                  setSelectedItinerary(itinerary.id);
-                  setViewMode(false);
-                }}>
-                Add/Modify
-              </button>
-              <button
-                className="view-button"
-                onClick={() => {
-                  setSelectedItinerary(itinerary.id);
-                  setViewMode(true);
-                }}>
-                View
-              </button>
-              <button
-                className="delete-button"
-                onClick={() => deleteItinerary(itinerary.id)}>
-                Delete
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div>
+        {itineraries.length > 0 && (
+          <>
+            <h2 className="personal-itin">Itineraries</h2>
+            <div className="searchitin-results">
+              <ul>
+                {itineraries.map((itinerary) => (
+                  <li key={itinerary.id}>
+                    <strong>{itinerary.name}</strong>
+                    <button
+                      className="modify-button"
+                      onClick={() => {
+                        setSelectedItinerary(itinerary.id);
+                        setViewMode(false);
+                      }}>
+                      Add/Modify
+                    </button>
+                    <button
+                      className="view-button"
+                      onClick={() => {
+                        setSelectedItinerary(itinerary.id);
+                        setViewMode(true);
+                      }}>
+                      View
+                    </button>
+                    <button
+                      className="delete-button"
+                      onClick={() => deleteItinerary(itinerary.id)}>
+                      Delete
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        )}
 
-      {selectedItinerary && !viewMode && (
-        <ItineraryList
-          itinerary={itineraries.find((itin) => itin.id === selectedItinerary)}
-          fetchPlaces={fetchPlaces}
-          setItineraries={setItineraries}
-          saveItinerary={saveItinerary}
-        />
-      )}
-
-      {selectedItinerary &&
-        viewMode &&
-        itineraries.find((itin) => itin.id === selectedItinerary) && (
-          <ViewItineraryList
+        {selectedItinerary && !viewMode && (
+          <ItineraryList
             itinerary={itineraries.find(
               (itin) => itin.id === selectedItinerary
             )}
+            fetchPlaces={fetchPlaces}
+            setItineraries={setItineraries}
+            saveItinerary={saveItinerary}
           />
         )}
+
+        {selectedItinerary &&
+          viewMode &&
+          itineraries.find((itin) => itin.id === selectedItinerary) && (
+            <ViewItineraryList
+              itinerary={itineraries.find(
+                (itin) => itin.id === selectedItinerary
+              )}
+            />
+          )}
+      </div>
     </div>
   );
 };
